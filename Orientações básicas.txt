@@ -1,0 +1,106 @@
+Setup
+Comece criando um diretório chamado testes-e2e-com-cypress/
+Via terminal de linha de comando, visite o diretório recém criado (cd testes-e2e-com-cypress/)
+Execute o comando git init
+Na raiz do projeto, crie um arquivo oculto chamado .gitignore com o seguinte conteúdo:
+.DS_Store
+cypress.env.json
+cypress/downloads/
+cypress/screenshots/
+cypress/videos/
+node_modules/
+Ainda na raiz do projeto, crie um arquivo chamado README.md com o seguinte conteúdo:
+# Testes _end-to-end_ com Cypress
+
+TBD.
+Execute o comando npm init -y
+Execute o comando npm install cypress@12.15.0 --save-dev (ou npm i cypress@12.15.0 -D para a versão curta)
+Também na raiz do projeto, crie um arquivo chamado cypress.env.json e outro chamado cypress.env.example.json. Inicialize ambos como um objeto vazio ({})
+Execute o comando npx cypress open para abrir o Cypress pela primeira vez
+Com a Cypress App aberta, clique no box E2E Testing
+Na seção Configuration Files, clique em Continue
+Na seção Choose a browser, selecione o Electron (ou Chrome) e clique em Start E2E Testing in [browser]
+Com o navegador aberto, clique em Create new spec, aceite o nome padrão, clique em Create spec e então clique em Okay, run the spec.
+Por fim, feche o navegador e a Cypress App.
+Obs.: Após seguir os passos acima, o Cypress automaticamente criará a estrutura do projeto de testes, com o arquivo cypress.config.js e o diretório cypress/ com os sub-diretórios e2e/, fixtures/ e support/, com seus respetivos arquivos.
+
+2
+
+No terminal de linha de comando, no diretório testes-e2e-com-cypress/, execute o comando npm install eslint@8.43.0 --save-dev (ou npm i eslint@8.43.0 -D para a versão curta)
+Logo após, execute o comando npx eslint --init e escolhas as opções que fizerem sentido para você (se não souber o que escolher, assita a aula onde executo tal comando e veja as opções que escolhi, ou então, simplesmente copie a versão final do meu arquivo .eslintrc.json, conforme abaixo)
+// .eslintrc.json
+
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "rules": {
+        "indent": [
+            "error",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "never"
+        ],
+        "no-trailing-spaces": [
+            "error"
+        ]
+    }
+}
+Exercício extra 1 - eslint-plugin-cypress
+No terminal de linha de comando, no diretório testes-e2e-com-cypress/, execute o comando npm install eslint-plugin-cypress@2.13.3 --save-dev (ou npm i eslint-plugin-cypress@2.13.3 -D para a versão curta)
+Logo após, dentro do diretório cypress/, crie outro arquivo chamado .eslintrc.json com o seguinte conteúdo:
+{
+  "extends": [
+    "plugin:cypress/recommended"
+  ],
+  "rules": {
+    "cypress/no-force": "error",
+    "cypress/assertion-before-screenshot": "error",
+    "cypress/no-pause": "error"
+  }
+}
+🧑‍🏫 Para mais detalhes sobre cada uma das regras do eslint-plugin-cypress, assista a Live Análise estática de código com o eslint-plugin-cypress no Canal TAT no YouTube.
+
+Exercício extra 2 - npm scripts
+Agora que o ESLint está configurado, é hora de criar scripts para validar o código estaticamente, além de corrigir erros automaticamente (quando possível).
+
+No arquivo package.json, crie um script chamado lint com o valor eslint cypress/**/*.js && eslint cypress.config.js
+Ainda no mesmo arquivo, crie um script chamado lint:fix com o valor eslint cypress/**/*.js --fix && eslint cypress.config.js --fix
+Por fim, execute o comando npm run lint para analisar o código existente estaticamente, e caso necessário, execute também o comando npm run lint:fix
+Alguns problemas serão corrigidos automaticamente, porém, se você ver os erros abaixo, não se preocupe, iremos lidar com eles em outra aula.
+
+  5:21  error  'on' is defined but never used      no-unused-vars
+  5:25  error  'config' is defined but never used  no-unused-vars
+
+✖ 2 problems (2 errors, 0 warnings)
+Exercício extra 3 - VSCode ESLint Plugin
+Se você for usuário(a) do VSCode, instale o plugin ESLint e tenha análise estática em tempo de execução em sua IDE favorita.
+
+Mostre ao mundo o que você aprendeu
+Como forma de demonstrar à sua rede profissional que você se importa com código de qualidade, poste o seguinte no LinkedIn.
+
+Estou fazendo o curso de testes end-to-end com Cypress da Escola TAT no Udemy, onde aprendi sobre análise estática de código utilizando as bibliotecas eslint e eslint-plugin-cypress. #TalkingAboutTesting #EscolaTAT #Cypress
+
+Observação: Lembre de me marcar em sua publicação. Segue meu perfil no LinkedIn. Aproveita pra se conectar comigo!
+
+# instalando o faker
+$ npm install --save-dev @faker-js/faker
+
+
